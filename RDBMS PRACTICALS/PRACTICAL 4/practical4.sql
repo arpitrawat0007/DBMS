@@ -1,0 +1,13 @@
+show databases;
+create database government_polytechnic;
+use government_polytechnic;
+create user 'staff'@'localhost';
+create user 'student'@'localhost';
+grant all privileges on government_polytechnic. *to 'staff'@'localhost';
+grant create on government_polytechnic. *to 'student'@'localhost';
+show grants for 'staff'@'localhost';
+show grants for 'student'@'localhost';
+show tables;
+revoke all privileges,grant option from'staff'@'localhost';
+revoke all privileges,grant option from'student'@'localhost';
+select user from mysql.user;

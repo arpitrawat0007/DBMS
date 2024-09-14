@@ -1,0 +1,12 @@
+create database practical7;
+use practical7;
+create table requests (request_id int unsigned primary key auto_increment,from_id int, to_id int);
+desc requests;
+create table request_log(log_id int unsigned auto_increment primary key,request_id int unsigned, request_status enum('pending','approved','rejected'),foreign key (request_id) references requests(request_id));
+desc request_log;
+insert into requests (from_id , to_id) values(1 , 2),(2 , 3),(3 , 4),(4 , 5),(5 , 6);
+Select*from requests;
+insert into request_log (request_id ,request_status) values(1, 'pending'),(2, 'approved'),(3, 'rejected'),(4, 'pending'),(5, 'approved');
+select*from request_log;
+CREATE VIEW view_request_status AS SELECT r.request_id, r.from_id, r.to_id, rl.request_status AS current_status FROM requests r JOIN (SELECT request_id, request_status FROM request_log WHERE (request_id, log_id) IN (SELECT request_id, MAX(log_id)FROM request_log GROUP BY request_id)) rl ON r.request_id = rl.request_id;
+select*from view_request_status;
