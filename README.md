@@ -48,7 +48,7 @@ Feel free to fork and contribute to this project. Suggestions and bug reports ar
 License
 
 
-This project is licensed under the MIT License. See LICENSE for details.
+This project is licensed under the MIT License.
 
 
 Contact
